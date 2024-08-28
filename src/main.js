@@ -4,7 +4,7 @@ import { addImagesToGallery } from './js/render-functions';
 const searchForm = document.querySelector('.submit-form');
 const searchInput = document.querySelector('.search-input');
 const galleryEl = document.querySelector('.gallery');
-const loaderEl = document.querySelector('.loader');
+// const loaderEl = document.querySelector('.loader');
 
 function clearGallery() {
   galleryEl.innerHTML = '';
@@ -23,7 +23,7 @@ searchForm.addEventListener('submit', event => {
   }
 
   clearGallery();
-  loaderEl.classList.remove('hidden');
+  //   loaderEl.classList.remove('hidden');
 
   fetchPhotos(query)
     .then(images => {
@@ -31,7 +31,13 @@ searchForm.addEventListener('submit', event => {
         addImagesToGallery(images);
       }
     })
-    .finally(() => {
-      loaderEl.classList.add('hidden');
+    .catch(error => {
+      iziToast.error({
+        message: 'An error occurred. Please try again later.',
+        position: 'topRight',
+      });
     });
+  // .finally(() => {
+  //   loaderEl.classList.add('hidden');
+  // });
 });
