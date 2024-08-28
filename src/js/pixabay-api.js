@@ -6,7 +6,7 @@ const API_KEY = '45506482-0746cd613ccb32219c9653431';
 export function fetchPhotos(query) {
   if (!query.trim()) {
     iziToast.error({
-      message: 'Please enter a searcg query!',
+      message: 'Please enter a search query!',
       position: 'topRight',
     });
     return Promise.resolve([]);
